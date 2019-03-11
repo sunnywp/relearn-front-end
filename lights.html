@@ -1,0 +1,35 @@
+<html>
+<head>
+    <style>
+      .light {
+          height: 50px;
+          width: 50px;
+          border-radius: 100%;
+      }
+    </style>
+</head>
+<body>
+    <div class="light">
+    </div>
+    <script type="text/javascript">
+        function sleep(duration){
+            return new Promise(function(resolve){
+                setTimeout(resolve, duration);
+            })
+        }
+        async function changeColor(duration,color){
+            document.getElementsByClassName("light")[0].style.background = color;
+            await sleep(duration);
+        }
+        async function main(){
+            while(true){
+                await changeColor(3000,"green");
+                await changeColor(1000, "yellow");
+                await changeColor(2000, "red");
+            }
+        }
+        main()
+    </script>
+</body>
+
+</html>
